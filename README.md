@@ -1,27 +1,8 @@
-# ming-
+输出：[2, 3, 4]
+效果描述：将输入的df清除异常值
+理论：
+首先计算出第一四分位数（Q1）、中位数、第三四分位数（Q3）。
+中位数我们都知道，就是将一组数字按从小到大的顺序排序后，处于中间位置（也就是50%位置）的数字。
+同理，第一四分位数、第三四分位数是按从小到大的顺序排序后，处于25%、75%的数字。
+令 IQR=Q3−Q1IQR=Q3−Q1 ，那么 Q3+1.5(IQR)Q3+1.5(IQR) 和 Q1−1.5(IQR)Q1−1.5(IQR) 之间的值就是可接受范围内的数值，这两个值之外的数认为是异常值。
 
-# Outlier detection
-import numpy as np
-
-def detect_outliers2(df):
-    outlier_indices = []
-
-    # 1st quartile (25%)
-    Q1 = np.percentile(df, 25)
-    # 3rd quartile (75%)
-    Q3 = np.percentile(df, 75)
-    # Interquartile range (IQR)
-    IQR = Q3 - Q1
-
-    # outlier step
-    outlier_step = 1.5 * IQR
-    for nu in df:
-        if (nu < Q1 - outlier_step) | (nu > Q3 + outlier_step):
-            df.remove(nu)
-    return df
-
-if __name__ == '__main__':
-    df = [-3331,2,3,4,11111]
-    Outliers_to_drop = detect_outliers2(df)
-    # Drop outliers
-    print(Outliers_to_drop)
