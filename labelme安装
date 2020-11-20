@@ -1,0 +1,13 @@
+1.将envs中的ame=labelme全部删掉
+然后##默认已经安装了anaconda
+##创建环境
+conda create -name=labelme python=3.7 //应该是自己的anaconda Python版本
+conda activate labelme //激活以labelme为名称的labelme环境    或者 conda activate ame=labelme
+
+conda install pyqt  //系统会自动安装最新的pyqt5,所以安装Python2时到此步也许会报错
+
+
+pip install labelme // 此处一般不会报错
+
+之后先activate ame=labelme
+然后输入labelme就可以标注了
